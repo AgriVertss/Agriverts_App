@@ -3,7 +3,6 @@ import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:agriverts/product/cubits/facilityCubit/facilitydetail_cubit.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:agriverts/product/widgets/custom_loading.dart';
-import 'package:agriverts/product/widgets/gauge_chart.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:flutter/material.dart';
@@ -14,42 +13,24 @@ class FacilityDetail extends StatelessWidget {
   final String facilityName;
   FacilityDetail({Key? key, required this.facilityName}) : super(key: key);
   late Size screenSize;
-  List<double> data = [
-    0.0,
-    1.0,
-    1.5,
-    0.0,
-    0.0,
-    1.0,
-    -0.5,
-    -1.0,
-    -0.5,
-    0.0,
-    0.0
-  ];
-  List<double> data2 = [
-    1.0,
-    1.5,
-    1.5,
-    0.0,
-    0.5,
-    0.0,
-    -0.5,
-    -1.0,
-    -0.5,
-  ];
+  Map<String, double> hasatData = {
+    "Geçen Zaman": 5,
+    "Kalan Zaman": 3,
+  };
+
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     return BlocProvider(
-      create: (context) => FacilityDetailCubit(),
+      create: (context) => FacilityDetailCubit()..getFacilityDetails(),
       child: BlocBuilder<FacilityDetailCubit, FacilityDetailState>(
         builder: (context, state) {
           if (state is FacilityDetailInitial ||
               state is FacilityDetailLoading) {
             return CustomLoadingIndicator();
           }
-          state is FacilityDetailLoaded;
+          state as FacilityDetailLoaded;
+          updateHasatData(state.facilityDetails.hasat,state.facilityDetails.hasatLeft);
           return SafeArea(
             child: Scaffold(
               appBar: AppBar(
@@ -76,7 +57,7 @@ class FacilityDetail extends StatelessWidget {
                             width: screenSize.width,
                             child: Center(
                               child: PieChart(
-                                dataMap: dataMap,
+                                dataMap: hasatData,
                                 chartType: ChartType.ring,
                               ),
                             ),
@@ -91,10 +72,24 @@ class FacilityDetail extends StatelessWidget {
                           SizedBox(
                             height: 20,
                           ),
-                          buildLineChart(title: 'Sıcaklık', prefix: '°C'),
-                          buildLineChart(title: 'Nem', prefix: '%'),
-                          buildLineChart(title: 'pH'),
-                          buildLineChart(title: 'CO2 Miktarı', prefix: 'ppm'),
+                          buildLineChart(
+                              data: state.facilityDetails.sicaklik,
+                              title: 'Sıcaklık',
+                              prefix: '°C',
+                              labelPrecision: 1),
+                          buildLineChart(
+                              data: state.facilityDetails.nem,
+                              title: 'Nem',
+                              prefix: '%',
+                              labelPrecision: 2),
+                          buildLineChart(
+                              data: state.facilityDetails.ph,
+                              title: 'pH',
+                              labelPrecision: 2),
+                          buildLineChart(
+                              data: state.facilityDetails.co2,
+                              title: 'CO2 Miktarı',
+                              prefix: 'ppm'),
                         ],
                       ),
                     ),
@@ -133,7 +128,16 @@ class FacilityDetail extends StatelessWidget {
     );
   }
 
-  Padding buildLineChart({required String title, String prefix = ' '}) {
+  void updateHasatData(double data1, double data2){
+    hasatData.update('Geçen Zaman',(_)=>data1);
+    hasatData.update('Kalan Zaman',(_)=>data2);
+  }
+
+  Padding buildLineChart(
+      {required String title,
+      String prefix = ' ',
+      required List<double> data,
+      int labelPrecision = 3}) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
@@ -149,7 +153,7 @@ class FacilityDetail extends StatelessWidget {
           Sparkline(
             data: data,
             gridLinelabelPrefix: prefix,
-            gridLineLabelPrecision: 3,
+            gridLineLabelPrecision: labelPrecision,
             enableGridLines: true,
             useCubicSmoothing: true,
           ),

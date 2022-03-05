@@ -1,4 +1,5 @@
 import 'package:agriverts/core/services/homeService/home_service.dart';
+import 'package:agriverts/product/models/facility_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -11,7 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   void getHomeData() async {
     emit(HomeLoading());
-    await service.fetchHomeData();
-    emit(HomeLoaded());
+    var facilities = await service.fetchFacilities();
+    emit(HomeLoaded(facilities:facilities));
   }
 }

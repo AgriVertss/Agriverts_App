@@ -125,7 +125,8 @@ class _AuthViewState extends State<AuthView>
                                         ),
                                         ElevatedButton(
                                           onPressed: () {
-                                            context.read<AuthCubit>().auth();
+                                            // context.read<AuthCubit>().auth();
+                                            context.router .replace(const HomeView());
                                           },
                                           child:
                                               BlocBuilder<AuthCubit, AuthState>(
@@ -133,7 +134,7 @@ class _AuthViewState extends State<AuthView>
                                               if (state is AuthInitial) {
                                                 return Text(AppConstant.login);
                                               } else if (state is AuthLoading) {
-                                                return CustomLoadingIndicator();
+                                                return CircularProgressIndicator();
                                               } else {
                                                 return Text(AppConstant.login);
                                               }

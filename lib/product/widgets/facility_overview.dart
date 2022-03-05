@@ -1,17 +1,20 @@
 import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/product/models/facility_model.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class FacilityOverview extends StatelessWidget {
-  const FacilityOverview({Key? key}) : super(key: key);
+  final FacilityModel data;
+  const FacilityOverview({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.router.push(FacilityDetail(facilityName: 'Facilityt 1'));
+        context.router.push(FacilityDetail(facilityName: data.facilityName));
       },
       child: Container(
         padding: EdgeInsets.only(right: 10),
@@ -27,15 +30,14 @@ class FacilityOverview extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ClipRRect(
-              borderRadius: AppConstant.symmetricRadius,
-              child: Image.network(
-                AppConstant.splashImagePath,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Text('Tarla'),
+                borderRadius: AppConstant.symmetricRadius,
+                child: FadeInImage.memoryNetwork(
+                  placeholder: kTransparentImage,
+                  image: AppConstant.splashImagePath,
+                )),
+            Text(data.facilityName),
             CircleAvatar(
-              backgroundColor: Colors.red,
+              backgroundColor: data.status ? Colors.green : Colors.red,
               radius: 15,
             ),
           ],

@@ -27,9 +27,11 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.network(
-        AppConstant.splashImagePath,
-        fit: BoxFit.cover,
+      body: Center(
+        child: Image.asset(
+          AppConstant.splashAssetPath,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

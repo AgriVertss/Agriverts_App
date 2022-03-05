@@ -14,10 +14,10 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit()..getHomeData(),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          if(state is HomeInitial || state is HomeLoading){
+          if (state is HomeInitial || state is HomeLoading) {
             return CustomLoadingIndicator();
           }
           state as HomeLoaded;
@@ -53,11 +53,14 @@ class HomeView extends StatelessWidget {
                       ),
                     ),
                     ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 3,
-                        itemBuilder: (context, index) {
-                          return FacilityOverview();
-                        }),
+                      shrinkWrap: true,
+                      itemCount: state.facilities.length,
+                      itemBuilder: (context, index) {
+                        return FacilityOverview(
+                          data: state.facilities[index],
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -98,5 +101,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
-

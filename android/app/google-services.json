@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "321421415719",
+    "project_id": "agriverts-88e5e",
+    "storage_bucket": "agriverts-88e5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321421415719:android:b148198cb5de974e9a8502",
+        "android_client_info": {
+          "package_name": "com.example.agriverts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321421415719-qds1dn35qm6sctemh2tfqop7b2dfmle1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agriverts",
+            "certificate_hash": "8b4d736153b2c9adffcbf87e7ef95256b2272ca1"
+          }
+        },
+        {
+          "client_id": "321421415719-72rgc4tteancai17ugm95hbjh849cr0b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxqeY3e98rleaznW6Mm-j7_nulcv7yLdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321421415719-72rgc4tteancai17ugm95hbjh849cr0b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
