@@ -1,9 +1,13 @@
 import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/product/cubits/facilityCubit/facilitydetail_cubit.dart';
+import 'package:agriverts/product/navigation/route.gr.dart';
+import 'package:agriverts/product/widgets/custom_loading.dart';
 import 'package:agriverts/product/widgets/gauge_chart.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class FacilityDetail extends StatelessWidget {
@@ -37,76 +41,94 @@ class FacilityDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(facilityName),
-        ),
-        body: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(left:15.0,right: 15,top: 15,bottom: 80),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppConstant.facilityTitle1,
-                      style: TextStyle(fontSize: 20),
+    return BlocProvider(
+      create: (context) => FacilityDetailCubit(),
+      child: BlocBuilder<FacilityDetailCubit, FacilityDetailState>(
+        builder: (context, state) {
+          if (state is FacilityDetailInitial ||
+              state is FacilityDetailLoading) {
+            return CustomLoadingIndicator();
+          }
+          state is FacilityDetailLoaded;
+          return SafeArea(
+            child: Scaffold(
+              appBar: AppBar(
+                title: Text(facilityName),
+              ),
+              body: Stack(
+                children: [
+                  SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15.0, right: 15, top: 15, bottom: 80),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppConstant.facilityTitle1,
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            height: 200,
+                            width: screenSize.width,
+                            child: Center(
+                              child: PieChart(
+                                dataMap: dataMap,
+                                chartType: ChartType.ring,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 80,
+                          ),
+                          Text(
+                            'Ortam Koşulları',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          buildLineChart(title: 'Sıcaklık', prefix: '°C'),
+                          buildLineChart(title: 'Nem', prefix: '%'),
+                          buildLineChart(title: 'pH'),
+                          buildLineChart(title: 'CO2 Miktarı', prefix: 'ppm'),
+                        ],
+                      ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 200,
-                      width: screenSize.width,
-                      child: Center(
-                        child: PieChart(
-                          dataMap: dataMap,
-                          chartType: ChartType.ring,
+                  ),
+                  Positioned(
+                    bottom: 10,
+                    width: screenSize.width,
+                    child: Center(
+                      child: InkWell(
+                        onTap: () {
+                          context.router.push(LiveCameraView());
+                        },
+                        child: Container(
+                          width: screenSize.width * 0.6,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: MyColors.primaryColor,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Canlı Görüntüyü Başlat',
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 80,
-                    ),
-                    Text(
-                      'Ortam Koşulları',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    buildLineChart(title: 'Sıcaklık', prefix: '°C'),
-                    buildLineChart(title: 'Nem', prefix: '%'),
-                    buildLineChart(title: 'pH'),
-                    buildLineChart(title: 'CO2 Miktarı', prefix: 'ppm'),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            Positioned(
-              bottom: 10,
-              width: screenSize.width,
-              child: Center(
-                child: Container(
-                  width: screenSize.width * 0.6,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: MyColors.primaryColor,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Canlı Görüntüyü Başlat',
-                      style: TextStyle(fontSize: 17),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

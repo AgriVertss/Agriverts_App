@@ -1,6 +1,7 @@
 import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/product/cubits/homeCubit/home_cubit.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
+import 'package:agriverts/product/widgets/custom_loading.dart';
 import 'package:agriverts/product/widgets/facility_overview.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -14,47 +15,55 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => HomeCubit(),
-      child: SafeArea(
-        child: Scaffold(
-          floatingActionButton: buildFBA(context),
-          body: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  AppConstant.homeWelcome + ' Alper',
-                  style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.green,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: Text(
-                    AppConstant.homeTitle,
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.green,
-                      fontWeight: FontWeight.normal,
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          if(state is HomeInitial || state is HomeLoading){
+            return CustomLoadingIndicator();
+          }
+          state as HomeLoaded;
+          return SafeArea(
+            child: Scaffold(
+              floatingActionButton: buildFBA(context),
+              body: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      AppConstant.homeWelcome + ' Alper',
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.green,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Text(
+                        AppConstant.homeTitle,
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.green,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return FacilityOverview();
+                        }),
+                  ],
                 ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return FacilityOverview();
-                    }),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
@@ -89,3 +98,5 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+
