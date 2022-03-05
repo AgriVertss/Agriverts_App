@@ -1,4 +1,5 @@
 import 'package:agriverts/core/constants/app_constants.dart';
+import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:agriverts/product/widgets/gauge_chart.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:chart_sparkline/chart_sparkline.dart';
@@ -45,7 +46,7 @@ class FacilityDetail extends StatelessWidget {
           children: [
             SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.only(left:15.0,right: 15,top: 15,bottom: 80),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -92,7 +93,7 @@ class FacilityDetail extends StatelessWidget {
                   width: screenSize.width * 0.6,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: Colors.green,
+                    color: MyColors.primaryColor,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Center(

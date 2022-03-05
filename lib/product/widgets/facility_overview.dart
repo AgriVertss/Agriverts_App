@@ -17,7 +17,7 @@ class FacilityOverview extends StatelessWidget {
         padding: EdgeInsets.only(right: 10),
         margin: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         width: MediaQuery.of(context).size.width * 0.8,
-        height: 100,
+        height: 80,
         decoration: BoxDecoration(
           color: MyColors.authContainerColor,
           borderRadius: BorderRadius.circular(20),

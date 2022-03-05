@@ -1,7 +1,7 @@
 import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 
-class AppTheme{
+class AppTheme {
   AppTheme._();
 
   static final ThemeData lightTheme = ThemeData(
@@ -9,5 +9,9 @@ class AppTheme{
     splashFactory: NoSplash.splashFactory,
     highlightColor: Colors.transparent,
     splashColor: Colors.transparent,
+    appBarTheme: AppBarTheme(
+      backgroundColor: MyColors.appbarColor,
+      elevation: 0
+    ),
   );
 }

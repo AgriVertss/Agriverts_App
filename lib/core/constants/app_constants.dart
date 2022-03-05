@@ -13,4 +13,6 @@ class AppConstant {
     bottomLeft: Radius.circular(20),
   );
   static const String facilityTitle1 = 'Hasat Süresi';
+  static const String homeTitle = 'Kayıtlı Dikey Tarım Merkezleriniz';
+  static const String homeWelcome = 'Merhaba';
 }
