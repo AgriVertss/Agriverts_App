@@ -3,7 +3,8 @@ import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/authCubit/auth_cubit.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
-import 'package:agriverts/product/widgets/custom_loading.dart';
+import 'package:agriverts/product/widgets/login_form.dart';
+import 'package:agriverts/product/widgets/register_form.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,8 +18,11 @@ class AuthView extends StatefulWidget {
 
 class _AuthViewState extends State<AuthView>
     with AutomaticKeepAliveClientMixin<AuthView> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final loginemailController = TextEditingController();
+  final loginpasswordController = TextEditingController();
+  final registeremailController = TextEditingController();
+  final registerpasswordController = TextEditingController();
+  final registeruserNameController = TextEditingController();
   @override
   // ignore: must_call_super
   Widget build(BuildContext context) {
@@ -26,8 +30,8 @@ class _AuthViewState extends State<AuthView>
       create: (context) => AuthCubit(),
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
-          if(state is AuthSucces){
-            context.router .replace(const HomeView());
+          if (state is AuthSucces) {
+            context.router.replace(const HomeView());
           }
         },
         child: SafeArea(
@@ -35,11 +39,14 @@ class _AuthViewState extends State<AuthView>
             color: Colors.white,
             padding: EdgeInsets.all(10),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   AppConstant.authTitle,
                   style: MyTextStyles.defaultTextStyle,
+                ),
+                SizedBox(
+                  height: 50,
                 ),
                 Center(
                   child: Container(
@@ -49,6 +56,7 @@ class _AuthViewState extends State<AuthView>
                       initialIndex: 0,
                       length: 2,
                       child: Scaffold(
+                        backgroundColor: Colors.white,
                         resizeToAvoidBottomInset: false,
                         appBar: AppBar(
                           shape: RoundedRectangleBorder(
@@ -64,94 +72,18 @@ class _AuthViewState extends State<AuthView>
                           child: TabBarView(
                             children: [
                               buildBaseContainer(
-                                child: Form(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ListView(
-                                      shrinkWrap: true,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        TextFormField(
-                                          textInputAction: TextInputAction.next,
-                                          controller: emailController,
-                                          decoration: const InputDecoration(
-                                              focusColor: MyColors.primaryColor,
-                                              errorStyle: TextStyle(
-                                                color: Colors.red,
-                                                fontSize: 15,
-                                              ),
-                                              border: OutlineInputBorder(),
-                                              hintText: "Enter Your Email",
-                                              label: Text("Email")),
-                                          validator: (String? value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return "Enter Valid Email";
-                                            } else if (!value.contains("@")) {
-                                              return " You are missing @";
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        TextFormField(
-                                          textInputAction: TextInputAction.go,
-                                          controller: passwordController,
-                                          decoration: const InputDecoration(
-                                              focusColor: MyColors.primaryColor,
-                                              errorStyle: TextStyle(
-                                                color: Colors.red,
-                                                fontSize: 15,
-                                              ),
-                                              border: OutlineInputBorder(),
-                                              hintText: "Enter Your Email",
-                                              label: Text("Email")),
-                                          validator: (String? value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return "Enter Valid Email";
-                                            } else if (!value.contains("@")) {
-                                              return " You are missing @";
-                                            }
-                                            return null;
-                                          },
-                                        ),
-                                        SizedBox(
-                                          height: 50,
-                                        ),
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            // context.read<AuthCubit>().auth();
-                                            context.router .replace(const HomeView());
-                                          },
-                                          child:
-                                              BlocBuilder<AuthCubit, AuthState>(
-                                            builder: (context, state) {
-                                              if (state is AuthInitial) {
-                                                return Text(AppConstant.login);
-                                              } else if (state is AuthLoading) {
-                                                return CircularProgressIndicator();
-                                              } else {
-                                                return Text(AppConstant.login);
-                                              }
-                                            },
-                                          ),
-                                          style: ElevatedButton.styleFrom(
-                                            primary: MyColors.primaryColor,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                child: LoginForm(
+                                    emailController: loginemailController,
+                                    passwordController:
+                                        loginpasswordController),
                               ),
                               buildBaseContainer(
-                                child: Column(
-                                  children: [],
+                                child: RegisterForm(
+                                  emailController: registeremailController,
+                                  passwordController:
+                                      registerpasswordController,
+                                  userNameController:
+                                      registeruserNameController,
                                 ),
                               ),
                             ],

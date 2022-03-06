@@ -2,9 +2,9 @@ import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:agriverts/product/models/facility_model.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
+import 'package:agriverts/product/widgets/custom_fade_image.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class FacilityOverview extends StatelessWidget {
   final FacilityModel data;
@@ -29,16 +29,18 @@ class FacilityOverview extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ClipRRect(
-                borderRadius: AppConstant.symmetricRadius,
-                child: FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: AppConstant.splashImagePath,
-                )),
-            Text(data.facilityName),
-            CircleAvatar(
-              backgroundColor: data.status ? Colors.green : Colors.red,
-              radius: 15,
+            CustomFadeInImage(imgUrl: AppConstant.splashImagePath,borderRadius: AppConstant.symmetricRadius),
+            Text(data.facilityName,style: TextStyle(fontSize: 18),),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Durum'),
+                SizedBox(height: 5,),
+                CircleAvatar(
+                  backgroundColor: data.status ? Colors.green : Colors.red,
+                  radius: 15,
+                ),
+              ],
             ),
           ],
         ),
@@ -46,3 +48,4 @@ class FacilityOverview extends StatelessWidget {
     );
   }
 }
+

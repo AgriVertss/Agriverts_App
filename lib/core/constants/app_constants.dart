@@ -16,4 +16,5 @@ class AppConstant {
   static const String homeTitle = 'Kayıtlı Dikey Tarım Merkezleriniz';
   static const String homeWelcome = 'Merhaba';
   static const String splashAssetPath ='assets/logo.png';
+  static const String pass = '"Password"';
 }

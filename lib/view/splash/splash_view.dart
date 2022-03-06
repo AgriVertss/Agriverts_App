@@ -30,7 +30,9 @@ class _SplashViewState extends State<SplashView> {
       body: Center(
         child: Image.asset(
           AppConstant.splashAssetPath,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
+          width: MediaQuery.of(context).size.width/1.5,
+          height: MediaQuery.of(context).size.width/1.5,
         ),
       ),
     );
