@@ -1,8 +1,7 @@
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/widgets/custom_fade_image.dart';
-import 'package:agriverts/product/widgets/facility_overview.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class SSSView extends StatelessWidget {
   const SSSView({Key? key}) : super(key: key);
@@ -12,7 +11,7 @@ class SSSView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Bazı Sık Sorulan Sorular'),
+          title: Text(TextConstants.sssTitle),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -22,7 +21,7 @@ class SSSView extends StatelessWidget {
                 Center(
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    height: 250,
+                    height: 270,
                     decoration: BoxDecoration(
                       color: MyColors.authContainerColor,
                       borderRadius: BorderRadius.circular(20),
@@ -55,7 +54,7 @@ class SSSView extends StatelessWidget {
                 Center(
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    height: 250,
+                    height: 280,
                     decoration: BoxDecoration(
                       color: MyColors.authContainerColor,
                       borderRadius: BorderRadius.circular(20),
@@ -100,7 +99,7 @@ class SSSView extends StatelessWidget {
                 Center(
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.9,
-                    height: 1000,
+                    height: 1010,
                     decoration: BoxDecoration(
                       color: MyColors.authContainerColor,
                       borderRadius: BorderRadius.circular(20),

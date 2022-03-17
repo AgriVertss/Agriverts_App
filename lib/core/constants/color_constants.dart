@@ -7,5 +7,5 @@ class MyColors {
   static const Color blackColor = Colors.black;
   static const Color appbarColor = Color.fromARGB(255, 56, 230, 146);
   static const Color tabbarColor = Colors.greenAccent;
-  static const Color authContainerColor = Color.fromARGB(255, 209, 209, 209);
+  static const Color authContainerColor = Color.fromARGB(255, 224, 224, 224);
 }

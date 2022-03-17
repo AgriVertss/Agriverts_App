@@ -1,5 +1,5 @@
-import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/style_constants.dart';
 import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/authCubit/auth_cubit.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
@@ -42,7 +42,7 @@ class _AuthViewState extends State<AuthView>
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  AppConstant.authTitle,
+                  TextConstants.authTitle,
                   style: MyTextStyles.defaultTextStyle,
                 ),
                 SizedBox(
@@ -110,10 +110,10 @@ class _AuthViewState extends State<AuthView>
       unselectedLabelColor: Colors.black,
       tabs: [
         Tab(
-          text: AppConstant.login,
+          text: TextConstants.login,
         ),
         Tab(
-          text: AppConstant.register,
+          text: TextConstants.register,
         )
       ],
     );

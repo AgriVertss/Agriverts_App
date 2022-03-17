@@ -1,4 +1,5 @@
 import 'package:agriverts/core/constants/app_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/homeCubit/home_cubit.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:agriverts/product/widgets/custom_loading.dart';
@@ -31,7 +32,7 @@ class HomeView extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Text(
-                      AppConstant.homeWelcome + ' Alper',
+                      TextConstants.homeWelcome + ' Alper',
                       style: TextStyle(
                         fontSize: 30,
                         color: Colors.green,
@@ -44,7 +45,7 @@ class HomeView extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
-                        AppConstant.homeTitle,
+                        TextConstants.homeTitle,
                         style: TextStyle(
                           fontSize: 22,
                           color: Colors.green,

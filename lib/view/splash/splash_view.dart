@@ -1,4 +1,4 @@
-import 'package:agriverts/core/constants/app_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/init/init_app.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -12,6 +12,7 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  late Size size;
   @override
   void initState() {
     super.initState();
@@ -26,13 +27,14 @@ class _SplashViewState extends State<SplashView> {
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
         child: Image.asset(
-          AppConstant.splashAssetPath,
+          TextConstants.splashAssetPath,
           fit: BoxFit.contain,
-          width: MediaQuery.of(context).size.width/1.5,
-          height: MediaQuery.of(context).size.width/1.5,
+          width: size.width/1.5,
+          height: size.width/1.5,
         ),
       ),
     );

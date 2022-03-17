@@ -1,5 +1,5 @@
-import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/authCubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +8,8 @@ class RegisterForm extends StatelessWidget {
   const RegisterForm({
     Key? key,
     required this.emailController,
-    required this.passwordController,required this.userNameController,
+    required this.passwordController,
+    required this.userNameController,
   }) : super(key: key);
 
   final TextEditingController emailController;
@@ -35,12 +36,12 @@ class RegisterForm extends StatelessWidget {
                     color: Colors.red,
                     fontSize: 15,
                   ),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                   hintText: "Enter Your Email",
                   label: Text("Email")),
               validator: (String? value) {
-                if (value == null ||
-                    value.isEmpty) {
+                if (value == null || value.isEmpty) {
                   return "Enter Valid Email";
                 } else if (!value.contains("@")) {
                   return " You are missing @";
@@ -55,13 +56,14 @@ class RegisterForm extends StatelessWidget {
               textInputAction: TextInputAction.next,
               controller: userNameController,
               decoration: const InputDecoration(
-                hoverColor: MyColors.primaryColor,
+                  hoverColor: MyColors.primaryColor,
                   focusColor: MyColors.primaryColor,
                   errorStyle: TextStyle(
                     color: Colors.red,
                     fontSize: 15,
                   ),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
                   hintText: "Kullanıcı Adı",
                   label: Text("Kullanıcı Adı")),
             ),
@@ -73,14 +75,16 @@ class RegisterForm extends StatelessWidget {
               controller: passwordController,
               decoration: const InputDecoration(
                 hoverColor: MyColors.primaryColor,
-                  focusColor: MyColors.primaryColor,
-                  errorStyle: TextStyle(
-                    color: Colors.red,
-                    fontSize: 15,
-                  ),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20))),
-                  hintText: "Password",
-                  label: Text(AppConstant.pass)),
+                focusColor: MyColors.primaryColor,
+                errorStyle: TextStyle(
+                  color: Colors.red,
+                  fontSize: 15,
+                ),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                hintText: "Password",
+                label: Text(TextConstants.pass),
+              ),
             ),
             SizedBox(
               height: 50,
@@ -89,18 +93,17 @@ class RegisterForm extends StatelessWidget {
               onPressed: () {
                 context.read<AuthCubit>().auth();
               },
-              child:
-                  BlocBuilder<AuthCubit, AuthState>(
+              child: BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, state) {
                   if (state is AuthInitial) {
-                    return Text(AppConstant.register);
+                    return Text(TextConstants.register);
                   } else if (state is AuthLoading) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    return Text(AppConstant.login);
+                    return Text(TextConstants.login);
                   }
                 },
               ),

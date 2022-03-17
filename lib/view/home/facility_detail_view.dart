@@ -1,5 +1,6 @@
 import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/facilityCubit/facilitydetail_cubit.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:agriverts/product/widgets/custom_loading.dart';
@@ -14,7 +15,7 @@ class FacilityDetail extends StatelessWidget {
   FacilityDetail({Key? key, required this.facilityName}) : super(key: key);
   late Size screenSize;
   Map<String, double> hasatData = {
-    "Geçen Zaman": 5,
+    "Geçen Zaman": 7,
     "Kalan Zaman": 3,
   };
 
@@ -46,7 +47,7 @@ class FacilityDetail extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            AppConstant.facilityTitle1,
+                            TextConstants.facilityTitle1,
                             style: TextStyle(fontSize: 20),
                           ),
                           SizedBox(

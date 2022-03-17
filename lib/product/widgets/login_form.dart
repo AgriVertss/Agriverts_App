@@ -1,5 +1,6 @@
 import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/authCubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,14 +77,14 @@ class LoginForm extends StatelessWidget {
                   BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, state) {
                   if (state is AuthInitial) {
-                    return Text(AppConstant.login);
+                    return Text(TextConstants.login);
                   } else if (state is AuthLoading) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    return Text(AppConstant.login);
+                    return Text(TextConstants.login);
                   }
                 },
               ),
