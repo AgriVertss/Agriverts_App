@@ -1,8 +1,8 @@
 import 'package:agriverts/view/auth/auth_view.dart';
-import 'package:agriverts/view/home/facility_detail_view.dart';
-import 'package:agriverts/view/home/home_view.dart';
-import 'package:agriverts/view/home/live_camera_view.dart';
-import 'package:agriverts/view/home/sss_view.dart';
+import 'package:agriverts/view/home/views/facility_detail_view.dart';
+import 'package:agriverts/view/home/views/home_view.dart';
+import 'package:agriverts/view/home/views/live_camera_view.dart';
+import 'package:agriverts/view/sss/sss_view.dart';
 import 'package:agriverts/view/splash/splash_view.dart';
 import 'package:auto_route/auto_route.dart';
 

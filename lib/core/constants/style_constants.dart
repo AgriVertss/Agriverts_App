@@ -8,4 +8,16 @@ class MyTextStyles {
     fontStyle: FontStyle.normal,
     decoration: TextDecoration.none,
   );
+
+  static const TextStyle homeSubTitle = TextStyle(
+    fontSize: 22,
+    color: Colors.green,
+    fontWeight: FontWeight.normal,
+  );
+
+  static const TextStyle homeTitle = TextStyle(
+    fontSize: 30,
+    color: Colors.green,
+    fontWeight: FontWeight.w400,
+  );
 }

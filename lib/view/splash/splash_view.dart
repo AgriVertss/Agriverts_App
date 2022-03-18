@@ -33,8 +33,8 @@ class _SplashViewState extends State<SplashView> {
         child: Image.asset(
           TextConstants.splashAssetPath,
           fit: BoxFit.contain,
-          width: size.width/1.5,
-          height: size.width/1.5,
+          width: size.width / 1.5,
+          height: size.width / 1.5,
         ),
       ),
     );

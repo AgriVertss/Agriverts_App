@@ -14,10 +14,10 @@ import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:flutter/material.dart' as _i8;
 
 import '../../view/auth/auth_view.dart' as _i3;
-import '../../view/home/facility_detail_view.dart' as _i4;
-import '../../view/home/home_view.dart' as _i2;
-import '../../view/home/live_camera_view.dart' as _i5;
-import '../../view/home/sss_view.dart' as _i6;
+import '../../view/home/views/facility_detail_view.dart' as _i4;
+import '../../view/home/views/home_view.dart' as _i2;
+import '../../view/home/views/live_camera_view.dart' as _i5;
+import '../../view/sss/sss_view.dart' as _i6;
 import '../../view/splash/splash_view.dart' as _i1;
 
 class NavigationRoute extends _i7.RootStackRouter {

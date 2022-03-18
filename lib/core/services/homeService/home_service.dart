@@ -16,7 +16,7 @@ class HomeService {
   }
 
   Future<FacilityDetailModel> fetchFacilityDetails({required String facilityId}) async {
-   var dataToBeReturned;
+   late FacilityDetailModel  dataToBeReturned;
     var data =
         await FirebaseFirestore.instance.collection('facilityDetail').get();
     for (var element in data.docs) {

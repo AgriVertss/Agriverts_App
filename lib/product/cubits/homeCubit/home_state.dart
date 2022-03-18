@@ -7,6 +7,7 @@ class HomeInitial extends HomeState {}
 class HomeLoading extends HomeState {}
 class HomeLoaded extends HomeState {
   final List<FacilityModel> facilities;
+  final String? userName;
 
-  HomeLoaded({required this.facilities});
+  HomeLoaded({this.userName, required this.facilities});
 }
