@@ -8,4 +8,5 @@ class TextConstants {
   static const String authTitle = 'Welcome to AgriVerts';
   static const String login = 'Giriş Yap';
   static const String register = 'Üye Ol';
+  static const String googleAuth = 'Sign In With Google';
 }

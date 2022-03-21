@@ -26,11 +26,6 @@ class AuthView extends StatefulWidget with AutoRouteWrapper {
 
 class _AuthViewState extends State<AuthView>
     with AutomaticKeepAliveClientMixin<AuthView> {
-  final loginemailController = TextEditingController();
-  final loginpasswordController = TextEditingController();
-  final registeremailController = TextEditingController();
-  final registerpasswordController = TextEditingController();
-  final registeruserNameController = TextEditingController();
   @override
   // ignore: must_call_super
   Widget build(BuildContext context) {
@@ -78,19 +73,10 @@ class _AuthViewState extends State<AuthView>
                         child: TabBarView(
                           children: [
                             buildBaseContainer(
-                              child: LoginForm(
-                                  emailController: loginemailController,
-                                  passwordController:
-                                      loginpasswordController),
+                              child: LoginForm(),
                             ),
                             buildBaseContainer(
-                              child: RegisterForm(
-                                emailController: registeremailController,
-                                passwordController:
-                                    registerpasswordController,
-                                userNameController:
-                                    registeruserNameController,
-                              ),
+                              child: RegisterForm(),
                             ),
                           ],
                         ),
@@ -101,9 +87,9 @@ class _AuthViewState extends State<AuthView>
               ),
               TextButton(
                 onPressed: () {
-                  context.read<AuthCubit>().auth();
+                  context.read<AuthCubit>().authWithGoogle();
                 },
-                child: Text('Sign In With Google'),
+                child: Text(TextConstants.googleAuth),
               ),
             ],
           ),

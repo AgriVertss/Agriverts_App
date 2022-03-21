@@ -5,16 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterForm extends StatelessWidget {
-  const RegisterForm({
+  RegisterForm({
     Key? key,
-    required this.emailController,
-    required this.passwordController,
-    required this.userNameController,
   }) : super(key: key);
 
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final TextEditingController userNameController;
+  final registeremailController = TextEditingController();
+  final registerpasswordController = TextEditingController();
+  final registeruserNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +26,7 @@ class RegisterForm extends StatelessWidget {
             ),
             TextFormField(
               textInputAction: TextInputAction.next,
-              controller: emailController,
+              controller: registeremailController,
               decoration: const InputDecoration(
                   focusColor: MyColors.primaryColor,
                   errorStyle: TextStyle(
@@ -54,7 +51,7 @@ class RegisterForm extends StatelessWidget {
             ),
             TextFormField(
               textInputAction: TextInputAction.next,
-              controller: userNameController,
+              controller: registeruserNameController,
               decoration: const InputDecoration(
                   hoverColor: MyColors.primaryColor,
                   focusColor: MyColors.primaryColor,
@@ -72,7 +69,7 @@ class RegisterForm extends StatelessWidget {
             ),
             TextFormField(
               textInputAction: TextInputAction.go,
-              controller: passwordController,
+              controller: registerpasswordController,
               decoration: const InputDecoration(
                 hoverColor: MyColors.primaryColor,
                 focusColor: MyColors.primaryColor,
@@ -91,19 +88,21 @@ class RegisterForm extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                context.read<AuthCubit>().auth();
+                context.read<AuthCubit>().signUpWithNative(
+                    email: registeremailController.text,
+                    password: registerpasswordController.text);
               },
               child: BlocBuilder<AuthCubit, AuthState>(
                 builder: (context, state) {
                   if (state is AuthInitial) {
                     return Text(TextConstants.register);
-                  } else if (state is AuthLoading) {
+                  } else if (state is AuthNativeLoading) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CircularProgressIndicator(),
                     );
                   } else {
-                    return Text(TextConstants.login);
+                    return Text(TextConstants.register);
                   }
                 },
               ),
