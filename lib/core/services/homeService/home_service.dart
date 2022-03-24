@@ -9,7 +9,7 @@ class HomeService {
     for (var element in data.docs) {
       var name = element['userId'];
       var status = element['status'];
-      var model = FacilityModel(name, status);
+      var model = FacilityModel(facilityName: name, status: status);
       facilities.add(model);
     }
     return facilities;

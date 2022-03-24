@@ -10,9 +10,9 @@ import 'package:auto_route/auto_route.dart';
   replaceInRouteName: 'Route,Route',
   routes: <AutoRoute>[
     AutoRoute(page: SplashView, initial: true),
-    AutoRoute(page: HomeView),
-    AutoRoute(page: AuthView),
-    AutoRoute(page: FacilityDetail),
+    CustomRoute(page: HomeView,transitionsBuilder: TransitionsBuilders.slideRight),
+    CustomRoute(page: AuthView,transitionsBuilder: TransitionsBuilders.slideRight),
+    CustomRoute(page: FacilityDetail,transitionsBuilder: TransitionsBuilders.fadeIn),
     AutoRoute(page: LiveCameraView),
     AutoRoute(page: SSSView),
   ],

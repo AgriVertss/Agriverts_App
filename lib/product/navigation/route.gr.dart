@@ -17,8 +17,8 @@ import '../../view/auth/auth_view.dart' as _i3;
 import '../../view/home/views/facility_detail_view.dart' as _i4;
 import '../../view/home/views/home_view.dart' as _i2;
 import '../../view/home/views/live_camera_view.dart' as _i5;
-import '../../view/sss/sss_view.dart' as _i6;
 import '../../view/splash/splash_view.dart' as _i1;
+import '../../view/sss/sss_view.dart' as _i6;
 
 class NavigationRoute extends _i7.RootStackRouter {
   NavigationRoute([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
@@ -31,19 +31,30 @@ class NavigationRoute extends _i7.RootStackRouter {
           routeData: routeData, child: const _i1.SplashView());
     },
     HomeView.name: (routeData) {
-      return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.HomeView());
+      return _i7.CustomPage<dynamic>(
+          routeData: routeData,
+          child: const _i2.HomeView(),
+          transitionsBuilder: _i7.TransitionsBuilders.slideRight,
+          opaque: true,
+          barrierDismissible: false);
     },
     AuthView.name: (routeData) {
-      return _i7.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i3.AuthView());
+      return _i7.CustomPage<dynamic>(
+          routeData: routeData,
+          child: const _i3.AuthView(),
+          transitionsBuilder: _i7.TransitionsBuilders.slideRight,
+          opaque: true,
+          barrierDismissible: false);
     },
     FacilityDetail.name: (routeData) {
       final args = routeData.argsAs<FacilityDetailArgs>();
-      return _i7.MaterialPageX<dynamic>(
+      return _i7.CustomPage<dynamic>(
           routeData: routeData,
           child: _i4.FacilityDetail(
-              key: args.key, facilityName: args.facilityName));
+              key: args.key, facilityName: args.facilityName),
+          transitionsBuilder: _i7.TransitionsBuilders.fadeIn,
+          opaque: true,
+          barrierDismissible: false);
     },
     LiveCameraView.name: (routeData) {
       return _i7.MaterialPageX<dynamic>(

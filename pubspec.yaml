@@ -18,6 +18,7 @@ dependencies:
   pie_chart: ^5.1.0
   chart_sparkline: ^1.0.10
   flutter_speed_dial: ^5.0.0+1
+  video_player: ^2.3.0
   firebase_core: ^1.13.1
   firebase_auth: ^3.3.9
   firebase_dynamic_links: ^4.1.1
