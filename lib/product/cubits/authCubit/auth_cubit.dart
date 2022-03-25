@@ -10,11 +10,11 @@ class AuthCubit extends Cubit<AuthState> {
   final GoogleAuthService _googleAuthService = GoogleAuthService();
   final NativeAuthService _nativeAuthService = NativeAuthService();
 
-  Future<void> authWithGoogle() async {
+  Future<void> signInWithGoogle() async {
     emit(AuthGoogleLoading());
     var isSigned = await _googleAuthService.signInWithGoogle();
     if (isSigned) {
-      emit(AuthSucces());
+      emit(AuthLoginSucces());
     } else {
       emit(AuthError());
     }
@@ -24,7 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthNativeLoading());
     var isSigned = await _nativeAuthService.nativeSignIn(email: email,password: password);
     if (isSigned) {
-      emit(AuthSucces());
+      emit(AuthLoginSucces());
     } else {
       emit(AuthError());
     }
@@ -33,7 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(AuthNativeLoading());
     var isSigned = await _nativeAuthService.nativeSignUp(email: email,password: password);
     if (isSigned) {
-      emit(AuthSucces());
+      emit(AuthRegisterSucces());
     } else {
       emit(AuthError());
     }

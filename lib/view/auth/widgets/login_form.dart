@@ -1,6 +1,7 @@
 import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/authCubit/auth_cubit.dart';
+import 'package:agriverts/view/auth/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,30 +67,23 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<AuthCubit>().signInWithNative(
-                    password: loginpasswordController.text,
-                    email: loginemailController.text);
-                // context.router .replace(const HomeView());
+            BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+                 if (state is AuthNativeLoading) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return CustomElevatedButton(
+                      onPressed: () {
+                        context.read<AuthCubit>().signInWithNative(
+                            password: loginpasswordController.text,
+                            email: loginemailController.text);
+                      },
+                      child: Text(TextConstants.login));
+                }
               },
-              child: BlocBuilder<AuthCubit, AuthState>(
-                builder: (context, state) {
-                  if (state is AuthInitial) {
-                    return Text(TextConstants.login);
-                  } else if (state is AuthNativeLoading) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircularProgressIndicator(),
-                    );
-                  } else {
-                    return Text(TextConstants.login);
-                  }
-                },
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: MyColors.primaryColor,
-              ),
             ),
             SizedBox(
               height: 10,

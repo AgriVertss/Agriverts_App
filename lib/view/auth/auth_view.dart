@@ -31,8 +31,11 @@ class _AuthViewState extends State<AuthView>
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state is AuthSucces) {
+        if (state is AuthLoginSucces) {
           context.router.replace(const HomeView());
+        }
+        if (state is AuthRegisterSucces) {
+          context.router.replace(const EmailConfirmationView());
         }
       },
       child: SafeArea(
@@ -87,7 +90,7 @@ class _AuthViewState extends State<AuthView>
               ),
               TextButton(
                 onPressed: () {
-                  context.read<AuthCubit>().authWithGoogle();
+                  context.read<AuthCubit>().signInWithGoogle();
                 },
                 child: Text(TextConstants.googleAuth),
               ),

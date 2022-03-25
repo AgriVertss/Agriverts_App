@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 class NativeAuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  User? user = FirebaseAuth.instance.currentUser;
   Future<bool> nativeSignIn(
       {required String email, required String password}) async {
     try {
@@ -31,6 +31,8 @@ class NativeAuthService {
         email: email,
         password: password,
       );
+
+      await sendEmailConfirmation();
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -44,7 +46,11 @@ class NativeAuthService {
       return false;
     }
   }
-
+  Future<void> sendEmailConfirmation() async{
+    if (user != null && !user!.emailVerified) {
+        await user!.sendEmailVerification();
+      }
+  }
   void nativeSignOut() {
     FirebaseAuth.instance.signOut();
   }
