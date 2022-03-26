@@ -11,12 +11,17 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeService service = HomeService();
 
-  void getHomeData() async {
+  Future<void> getHomeData() async {
     emit(HomeLoading());
     var facilities = await service.fetchFacilities();
     var userName = FirebaseAuth.instance.currentUser!.displayName;
     emit(
       HomeLoaded(facilities: facilities, userName: userName),
     );
+  }
+
+  Future<bool> deleteFacility() async{
+    await service.deleteFacility(facilityToBeDeleted: FacilityModel(facilityName: 'asdas', status: true));
+    return true;
   }
 }

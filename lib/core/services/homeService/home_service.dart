@@ -15,6 +15,11 @@ class HomeService {
     return facilities;
   }
 
+  Future<bool> deleteFacility({required FacilityModel facilityToBeDeleted}) async{
+     await FirebaseFirestore.instance.collection('facilities').doc('D2zpdc6hPZw3MO7oJ8yS').delete();
+     return true;
+  }
+
   Future<FacilityDetailModel> fetchFacilityDetails({required String facilityId}) async {
    late FacilityDetailModel  dataToBeReturned;
     var data =

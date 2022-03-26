@@ -52,6 +52,7 @@ class LoginForm extends StatelessWidget {
             TextFormField(
               textInputAction: TextInputAction.go,
               controller: loginpasswordController,
+              obscureText: true,
               decoration: const InputDecoration(
                   hoverColor: MyColors.primaryColor,
                   focusColor: MyColors.primaryColor,

@@ -13,16 +13,12 @@ class HomeFBA extends StatelessWidget {
     return SpeedDial(
       children: [
         SpeedDialChild(
-          child: const Icon(Icons.remove_circle),
-          label: 'Kaldır',
-          backgroundColor: Colors.red,
-          onTap: () {/* Do something */},
-        ),
-        SpeedDialChild(
           child: const Icon(Icons.add),
           label: 'Yeni Ekle',
           backgroundColor: Colors.green,
-          onTap: () {/* Do something */},
+          onTap: () {
+            context.router.push(AddFacilityView());
+          },
         ),
         SpeedDialChild(
           child: const Icon(Icons.question_mark_sharp),

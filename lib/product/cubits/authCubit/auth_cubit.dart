@@ -38,4 +38,8 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthError());
     }
   }
+
+  Future<void> signOut() async{
+   await _googleAuthService.signOutFromGoogle();
+  }
 }

@@ -71,6 +71,7 @@ class RegisterForm extends StatelessWidget {
             TextFormField(
               textInputAction: TextInputAction.go,
               controller: registerpasswordController,
+              obscureText: false,
               decoration: const InputDecoration(
                 hoverColor: MyColors.primaryColor,
                 focusColor: MyColors.primaryColor,

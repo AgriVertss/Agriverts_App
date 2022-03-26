@@ -1,5 +1,10 @@
+import 'dart:developer';
+
 import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/facilityCubit/facilitydetail_cubit.dart';
+import 'package:agriverts/product/cubits/homeCubit/home_cubit.dart';
+import 'package:agriverts/product/navigation/route.gr.dart';
+import 'package:agriverts/product/widgets/custom_dialog.dart';
 import 'package:agriverts/product/widgets/custom_loading.dart';
 import 'package:agriverts/view/home/widgets/camera_button.dart';
 import 'package:agriverts/view/home/widgets/custom_line_chart.dart';
@@ -39,6 +44,30 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(
+              actions: [
+                PopupMenuButton(
+                    tooltip: 'Options',
+                    child: Icon(Icons.more_vert_outlined),
+                    offset: Offset(0, 40),
+                    itemBuilder: (context) {
+                      return <PopupMenuEntry<dynamic>>[
+                        PopupMenuItem(
+                          onTap: () {
+                            WidgetsBinding?.instance?.addPostFrameCallback((_) {
+                              CustomDialog(
+                                title: 'Are you sure you want to delete',
+                                onpressedAction: () {
+                                  context.read<HomeCubit>().deleteFacility();
+                                  context.router.replace(HomeView());
+                                },
+                              ).show(context);
+                            });
+                          },
+                          child: Text('Bu Tesisi Sil'),
+                        ),
+                      ];
+                    }),
+              ],
               title: Text(facilityName),
             ),
             body: Stack(
@@ -122,5 +151,3 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
     hasatData.update('Kalan Zaman', (_) => data2);
   }
 }
-
-

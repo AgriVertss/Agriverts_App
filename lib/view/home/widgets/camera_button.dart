@@ -13,6 +13,15 @@ class CameraButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        _buildBackgroundEffect(),
+        _buildButton(context),
+      ],
+    );
+  }
+
+  Positioned _buildButton(BuildContext context) {
     return Positioned(
       bottom: 10,
       width: screenSize.width,
@@ -35,6 +44,23 @@ class CameraButton extends StatelessWidget {
               ),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  Positioned _buildBackgroundEffect() {
+    return Positioned(
+      bottom: 0,
+      width: screenSize.width,
+      child: Container(
+        width: screenSize.width,
+        height: 55,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Colors.transparent, Colors.green.shade200],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter),
         ),
       ),
     );
