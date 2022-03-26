@@ -9,3 +9,4 @@ class AuthNativeLoading extends AuthState {}
 class AuthLoginSucces extends AuthState {}
 class AuthRegisterSucces extends AuthState {}
 class AuthError extends AuthState {}
+class AuthEmptyFieldError extends AuthState {}

@@ -1,8 +1,5 @@
-import 'package:agriverts/product/cubits/authCubit/auth_cubit.dart';
-import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomDialog extends StatelessWidget {
   final String title;

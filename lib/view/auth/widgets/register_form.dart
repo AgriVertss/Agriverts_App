@@ -100,7 +100,8 @@ class RegisterForm extends StatelessWidget {
                     onPressed: () {
                       context.read<AuthCubit>().signUpWithNative(
                           email: registeremailController.text,
-                          password: registerpasswordController.text);
+                          password: registerpasswordController.text,
+                          userName: registeruserNameController.value.text);
                     },
                     child: Text(TextConstants.register),
                   );

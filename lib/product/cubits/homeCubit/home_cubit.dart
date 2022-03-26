@@ -19,9 +19,4 @@ class HomeCubit extends Cubit<HomeState> {
       HomeLoaded(facilities: facilities, userName: userName),
     );
   }
-
-  Future<bool> deleteFacility() async{
-    await service.deleteFacility(facilityToBeDeleted: FacilityModel(facilityName: 'asdas', status: true));
-    return true;
-  }
 }

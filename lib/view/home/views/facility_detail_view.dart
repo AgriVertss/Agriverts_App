@@ -53,11 +53,11 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
                       return <PopupMenuEntry<dynamic>>[
                         PopupMenuItem(
                           onTap: () {
-                            WidgetsBinding?.instance?.addPostFrameCallback((_) {
+                            WidgetsBinding.instance?.addPostFrameCallback((_) {
                               CustomDialog(
                                 title: 'Are you sure you want to delete',
                                 onpressedAction: () {
-                                  context.read<HomeCubit>().deleteFacility();
+                                  context.read<FacilityDetailCubit>().deleteFacility();
                                   context.router.replace(HomeView());
                                 },
                               ).show(context);

@@ -79,8 +79,8 @@ class LoginForm extends StatelessWidget {
                   return CustomElevatedButton(
                       onPressed: () {
                         context.read<AuthCubit>().signInWithNative(
-                            password: loginpasswordController.text,
-                            email: loginemailController.text);
+                            password: loginpasswordController.value.text,
+                            email: loginemailController.value.text);
                       },
                       child: Text(TextConstants.login));
                 }

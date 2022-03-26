@@ -21,6 +21,10 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signInWithNative({required String email, required String password}) async {
+    if(email==''||password==''){
+      emit(AuthEmptyFieldError());
+      return;
+    }
     emit(AuthNativeLoading());
     var isSigned = await _nativeAuthService.nativeSignIn(email: email,password: password);
     if (isSigned) {
@@ -29,7 +33,11 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthError());
     }
   }
-  Future<void> signUpWithNative({required String email, required String password}) async {
+  Future<void> signUpWithNative({required String email, required String password, required String userName}) async {
+    if(email==''||password=='' || userName==''){
+      emit(AuthEmptyFieldError());
+      return;
+    }
     emit(AuthNativeLoading());
     var isSigned = await _nativeAuthService.nativeSignUp(email: email,password: password);
     if (isSigned) {
