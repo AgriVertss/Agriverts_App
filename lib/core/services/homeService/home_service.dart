@@ -15,32 +15,40 @@ class HomeService {
     return facilities;
   }
 
-  Future<bool> deleteFacility({required FacilityModel facilityToBeDeleted}) async{
-     await FirebaseFirestore.instance.collection('facilities').doc('D2zpdc6hPZw3MO7oJ8yS').delete();
-     return true;
+  Future<bool> deleteFacility(
+      {required FacilityModel facilityToBeDeleted}) async {
+    await FirebaseFirestore.instance
+        .collection('facilities')
+        .doc('D2zpdc6hPZw3MO7oJ8yS')
+        .delete();
+    return true;
   }
 
-  Future<FacilityDetailModel> fetchFacilityDetails({required String facilityId}) async {
-   late FacilityDetailModel  dataToBeReturned;
+  Future<FacilityDetailModel> fetchFacilityDetails(
+      {required String facilityId}) async {
+    late FacilityDetailModel dataToBeReturned;
     var data =
         await FirebaseFirestore.instance.collection('facilityDetail').get();
     for (var element in data.docs) {
       var model = FacilityDetailModel(
+        health: parseString(element['health']),
         co2: parseString(element['co2']),
         nem: parseString(element['nem']),
         ph: parseString(element['ph']),
         sicaklik: parseString(element['sıcaklık']),
         hasat: double.parse(element['hasat']),
-        hasatLeft: double.parse(element['hasatLeft']),
+        hasatLeft: double.parse(
+          element['hasatLeft'],
+        ),
       );
       dataToBeReturned = model;
     }
     return dataToBeReturned;
   }
 
-  List<double> parseString(List<dynamic> data){
-    List<double> newData =[];
-    for(var index in data){
+  List<double> parseString(List<dynamic> data) {
+    List<double> newData = [];
+    for (var index in data) {
       newData.add(double.parse(index));
     }
     return newData;

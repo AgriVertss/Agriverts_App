@@ -16,26 +16,29 @@ class CustomLineChart extends StatelessWidget {
   final int labelPrecision;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 15),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Sparkline(
-            data: data,
-            gridLinelabelPrefix: prefix,
-            gridLineLabelPrecision: labelPrecision,
-            enableGridLines: true,
-            useCubicSmoothing: true,
-          ),
-        ],
+    return Card(
+      elevation: 10,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(fontSize: 15),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Sparkline(
+              data: data,
+              gridLinelabelPrefix: prefix,
+              gridLineLabelPrecision: labelPrecision,
+              enableGridLines: true,
+              useCubicSmoothing: true,
+            ),
+          ],
+        ),
       ),
     );
   }

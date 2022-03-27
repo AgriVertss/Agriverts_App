@@ -10,4 +10,5 @@ class TextConstants {
   static const String register = 'Üye Ol';
   static const String googleAuth = 'Sign In With Google';
   static const String authSnackTitle = 'All fields must be filled';
+  static const String healtyCard = 'Health Percentage';
 }
