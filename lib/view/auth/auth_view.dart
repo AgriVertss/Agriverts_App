@@ -41,6 +41,7 @@ class _AuthViewState extends State<AuthView>
             color: Colors.white,
             padding: EdgeInsets.all(10),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   TextConstants.authTitle,
