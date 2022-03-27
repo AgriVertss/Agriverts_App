@@ -12,7 +12,9 @@ class CustomFadeInImage extends StatelessWidget {
     return ClipRRect(
         borderRadius: borderRadius,
         child: FadeInImage.memoryNetwork(
+          width: 120,
           placeholder: kTransparentImage,
+          fit: BoxFit.cover,
           image: imgUrl,
         ));
   }

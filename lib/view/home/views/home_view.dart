@@ -6,7 +6,7 @@ import 'package:agriverts/product/cubits/homeCubit/home_cubit.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:agriverts/product/widgets/custom_dialog.dart';
 import 'package:agriverts/product/widgets/custom_loading.dart';
-import 'package:agriverts/product/widgets/facility_overview.dart';
+import 'package:agriverts/view/home/widgets/facility_overview.dart';
 import 'package:agriverts/product/widgets/home_fba.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,5 @@
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class CameraButton extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                'Canlı Görüntüyü Başlat',
+                TextConstants.live,
                 style: TextStyle(fontSize: 17),
               ),
             ),

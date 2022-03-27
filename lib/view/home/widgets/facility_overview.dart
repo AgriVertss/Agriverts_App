@@ -1,5 +1,6 @@
 import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/models/facility_model.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:agriverts/product/widgets/custom_fade_image.dart';
@@ -34,7 +35,7 @@ class FacilityOverview extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Durum'),
+                Text(TextConstants.stat),
                 SizedBox(height: 5,),
                 CircleAvatar(
                   backgroundColor: data.status ? Colors.green : Colors.red,

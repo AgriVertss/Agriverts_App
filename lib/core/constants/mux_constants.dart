@@ -1,23 +1,29 @@
-// API for sending videos
-const muxBaseUrl = 'https://api.mux.com';
+
+mixin MuxConstant{
+  // API for sending videos
+String muxBaseUrl = 'https://api.mux.com';
 
 // API server running on localhost
-const muxServerUrl = 'http://localhost:3000';
+String muxServerUrl = 'http://localhost:3000';
 
 // API for generating thumbnails of a video
-const muxImageBaseUrl = 'https://image.mux.com';
+String muxImageBaseUrl = 'https://image.mux.com';
 
 // API for streaming a video
-const muxStreamBaseUrl = 'https://stream.mux.com';
+String muxStreamBaseUrl = 'https://stream.mux.com';
 
 // Received video file format
-const videoExtension = 'm3u8';
+String videoExtension = 'm3u8';
 
 // Thumbnail file type and size
-const imageTypeSize = 'thumbnail.jpg?time=5&width=200';
+String imageTypeSize = 'thumbnail.jpg?time=5&width=200';
 
 // Content Type used in API calls
-const contentType = 'application/json';
+String contentType = 'application/json';
 
 // Test video url provided by MUX
-const demoVideoUrl = 'https://storage.googleapis.com/muxdemofiles/mux-video-intro.mp4';
+String demoVideoUrl = 'https://storage.googleapis.com/muxdemofiles/mux-video-intro.mp4';
+
+String  playbackId = "MtOiFUjjdqXHl4WjHMFoNB01y02MAPAKlEuhw5NH7lzIw";
+
+}

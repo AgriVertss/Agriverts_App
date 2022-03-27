@@ -62,8 +62,8 @@ class RegisterForm extends StatelessWidget {
                   ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  hintText: "Kullanıcı Adı",
-                  label: Text("Kullanıcı Adı")),
+                  hintText: "Username",
+                  label: Text("Username")),
             ),
             SizedBox(
               height: 20,

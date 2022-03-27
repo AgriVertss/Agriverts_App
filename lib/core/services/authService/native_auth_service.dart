@@ -6,12 +6,10 @@ class NativeAuthService {
   Future<bool> nativeSignIn(
       {required String email, required String password}) async {
     try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -26,8 +24,7 @@ class NativeAuthService {
   Future<bool> nativeSignUp(
       {required String email, required String password}) async {
     try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -46,11 +43,13 @@ class NativeAuthService {
       return false;
     }
   }
-  Future<void> sendEmailConfirmation() async{
+
+  Future<void> sendEmailConfirmation() async {
     if (user != null && !user!.emailVerified) {
-        await user!.sendEmailVerification();
-      }
+      await user!.sendEmailVerification();
+    }
   }
+
   void nativeSignOut() {
     FirebaseAuth.instance.signOut();
   }

@@ -1,15 +1,13 @@
 import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/facilityCubit/facilitydetail_cubit.dart';
 import 'package:agriverts/product/models/facility_detail_model.dart';
-import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:agriverts/product/widgets/charts/custom_bar_chart.dart';
 import 'package:agriverts/product/widgets/charts/custom_pie_chart.dart';
-import 'package:agriverts/product/widgets/custom_dialog.dart';
 import 'package:agriverts/product/widgets/custom_loading.dart';
 import 'package:agriverts/view/home/widgets/camera_button.dart';
-import 'package:agriverts/view/home/widgets/custom_line_chart.dart';
+import 'package:agriverts/product/widgets/charts/custom_line_chart.dart';
+import 'package:agriverts/view/home/widgets/custom_popup_button.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,12 +16,12 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
   FacilityDetail({Key? key, required this.facilityName}) : super(key: key);
   late Size screenSize;
   Map<String, double> hasatData = {
-    "Geçen Zaman": 5,
-    "Kalan Zaman": 5,
+    TextConstants.elapsed: 5,
+    TextConstants.remain: 5,
   };
   Map<String, double> healthData = {
-    "Health": 5,
-    "Disease": 5,
+    TextConstants.health: 5,
+    TextConstants.disease: 5,
   };
 
   @override
@@ -55,30 +53,7 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
           child: Scaffold(
             appBar: AppBar(
               actions: [
-                PopupMenuButton(
-                    tooltip: 'Options',
-                    child: Icon(Icons.more_vert_outlined),
-                    offset: Offset(0, 40),
-                    itemBuilder: (context) {
-                      return <PopupMenuEntry<dynamic>>[
-                        PopupMenuItem(
-                          onTap: () {
-                            WidgetsBinding.instance?.addPostFrameCallback((_) {
-                              CustomDialog(
-                                title: 'Are you sure you want to delete',
-                                onpressedAction: () {
-                                  context
-                                      .read<FacilityDetailCubit>()
-                                      .deleteFacility();
-                                  context.router.replace(HomeView());
-                                },
-                              ).show(context);
-                            });
-                          },
-                          child: Text('Bu Tesisi Sil'),
-                        ),
-                      ];
-                    }),
+                CustomPopUpButton(),
               ],
               title: Text(facilityName),
             ),
@@ -118,7 +93,7 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Homogeneous Ratio ',
+          TextConstants.homogeneous,
           style: TextStyle(fontSize: 20),
         ),
         SizedBox(
@@ -152,7 +127,7 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
     return Column(
       children: [
         Text(
-          'Ortam Koşulları',
+          TextConstants.ambient,
           style: TextStyle(fontSize: 20),
         ),
         SizedBox(
@@ -160,12 +135,12 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
         ),
         CustomLineChart(
             data: facilityDetails.sicaklik,
-            title: 'Sıcaklık',
+            title: TextConstants.temp,
             prefix: '°C',
             labelPrecision: 1),
         CustomLineChart(
             data: facilityDetails.nem,
-            title: 'Nem',
+            title: TextConstants.moisture,
             prefix: '%',
             labelPrecision: 2),
         CustomLineChart(
@@ -174,8 +149,13 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
           labelPrecision: 2,
         ),
         CustomLineChart(
-            data: facilityDetails.co2, title: 'CO2 Miktarı', prefix: 'ppm'),
+          data: facilityDetails.co2,
+          title: TextConstants.co2,
+          prefix: 'ppm',
+        ),
       ],
     );
   }
 }
+
+

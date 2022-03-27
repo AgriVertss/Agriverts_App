@@ -10,8 +10,7 @@ class LiveCameraView extends StatefulWidget {
   State<LiveCameraView> createState() => _LiveCameraViewState();
 }
 
-class _LiveCameraViewState extends State<LiveCameraView> {
-  String playbackId = "1";
+class _LiveCameraViewState extends State<LiveCameraView> with MuxConstant{
   late VideoPlayerController _controller;
 
   @override
@@ -22,7 +21,6 @@ class _LiveCameraViewState extends State<LiveCameraView> {
       ..initialize().then((_) {
         setState(() {});
       });
-
     _controller.play();
   }
 
@@ -32,11 +30,19 @@ class _LiveCameraViewState extends State<LiveCameraView> {
       body: _controller.value.isInitialized
           ? AspectRatio(
               aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
+              child: _controller.value.isBuffering
+                  ? CircularProgressIndicator()
+                  : VideoPlayer(_controller),
             )
           : Center(
               child: CustomLoadingIndicator(),
             ),
     );
+  }
+
+  @override
+  void dispose() {
+  _controller.dispose();
+    super.dispose();
   }
 }
