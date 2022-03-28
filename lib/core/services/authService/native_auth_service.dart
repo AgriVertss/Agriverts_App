@@ -22,14 +22,20 @@ class NativeAuthService {
   }
 
   Future<bool> nativeSignUp(
-      {required String email, required String password}) async {
+      {required String email,
+      required String password,
+      required String username}) async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      await sendEmailConfirmation();
+      auth.authStateChanges().listen((user) {
+        if (user != null) {
+          user.updateDisplayName(username);
+        }
+      });
+      // await sendEmailConfirmation();
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

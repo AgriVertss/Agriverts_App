@@ -4,7 +4,7 @@ import 'package:agriverts/product/models/facility_detail_model.dart';
 import 'package:agriverts/product/widgets/charts/custom_bar_chart.dart';
 import 'package:agriverts/product/widgets/charts/custom_pie_chart.dart';
 import 'package:agriverts/product/widgets/custom_loading.dart';
-import 'package:agriverts/view/home/widgets/camera_button.dart';
+import 'package:agriverts/product/widgets/custom_stack_button.dart';
 import 'package:agriverts/product/widgets/charts/custom_line_chart.dart';
 import 'package:agriverts/view/home/widgets/custom_popup_button.dart';
 import 'package:auto_route/auto_route.dart';
@@ -38,7 +38,7 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
     return BlocBuilder<FacilityDetailCubit, FacilityDetailState>(
       builder: (context, state) {
         if (state is FacilityDetailInitial || state is FacilityDetailLoading) {
-          return CustomLoadingIndicator();
+          return ScaffoldLoadingIndicator();
         }
         state as FacilityDetailLoaded;
         CustomPieChart.updatePieChartData(
@@ -79,7 +79,10 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
                     ),
                   ),
                 ),
-                CameraButton(screenSize: screenSize),
+                CustomStackButton(
+                  title: TextConstants.live,
+                  isShowEffect: true,
+                ),
               ],
             ),
           ),
@@ -157,5 +160,3 @@ class FacilityDetail extends StatelessWidget with AutoRouteWrapper {
     );
   }
 }
-
-

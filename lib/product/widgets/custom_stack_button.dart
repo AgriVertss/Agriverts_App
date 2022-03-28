@@ -1,23 +1,24 @@
 import 'package:agriverts/core/constants/color_constants.dart';
-import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-class CameraButton extends StatelessWidget {
-  const CameraButton({
+class CustomStackButton extends StatelessWidget {
+  CustomStackButton({
     Key? key,
-    required this.screenSize,
+    required this.title,
+    this.isShowEffect = false,
   }) : super(key: key);
-
-  final Size screenSize;
-
+  final String title;
+  final bool isShowEffect;
+  late Size screenSize;
   @override
   Widget build(BuildContext context) {
+    screenSize = MediaQuery.of(context).size;
     return Stack(
       children: [
-        _buildBackgroundEffect(),
-        _buildButton(context),
+       isShowEffect ? _buildBackgroundEffect() : Container(),
+         _buildButton(context),
       ],
     );
   }
@@ -40,7 +41,7 @@ class CameraButton extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                TextConstants.live,
+                title,
                 style: TextStyle(fontSize: 17),
               ),
             ),

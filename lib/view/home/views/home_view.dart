@@ -28,7 +28,7 @@ class HomeView extends StatelessWidget with AutoRouteWrapper {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeInitial || state is HomeLoading) {
-          return CustomLoadingIndicator();
+          return ScaffoldLoadingIndicator();
         }
         state as HomeLoaded;
         return SafeArea(

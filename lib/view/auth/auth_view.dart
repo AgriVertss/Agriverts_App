@@ -27,10 +27,15 @@ class _AuthViewState extends State<AuthView>
         if (state is AuthLoginSucces) {
           context.router.replace(const HomeView());
         } else if (state is AuthRegisterSucces) {
-          context.router.replace(const EmailConfirmationView());
+          context.router.replace(const HomeView());
         } else if (state is AuthEmptyFieldError) {
           ScaffoldMessenger.of(context).showSnackBar(
             displaySnackBar(message: TextConstants.authSnackTitle),
+          );
+        }
+        else if(state is AuthError){
+          ScaffoldMessenger.of(context).showSnackBar(
+            displaySnackBar(message: TextConstants.fail),
           );
         }
       },
@@ -53,7 +58,7 @@ class _AuthViewState extends State<AuthView>
                 Center(
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.75,
-                    height: 400,
+                    height: MediaQuery.of(context).size.height /1.8,
                     child: DefaultTabController(
                       initialIndex: 0,
                       length: 2,
@@ -64,7 +69,7 @@ class _AuthViewState extends State<AuthView>
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
-                          backgroundColor: MyColors.appbarColor,
+                          backgroundColor: MyColors.primaryColor,
                           elevation: 0,
                           toolbarHeight: 0,
                           bottom: buidTabbar(),
@@ -87,10 +92,13 @@ class _AuthViewState extends State<AuthView>
                   ),
                 ),
                 TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.grey.shade400,
+                  ),
                   onPressed: () {
                     context.read<AuthCubit>().signInWithGoogle();
                   },
-                  child: Text(TextConstants.googleAuth),
+                  child: Text(TextConstants.googleAuth,style: MyTextStyles.miniStyle,),
                 ),
               ],
             ),
@@ -103,10 +111,10 @@ class _AuthViewState extends State<AuthView>
   TabBar buidTabbar() {
     return TabBar(
       indicator: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
-        color: MyColors.tabbarColor,
+        borderRadius: BorderRadius.circular(20),
+        color: MyColors.appbarColor,
       ),
-      unselectedLabelColor: Colors.black,
+      unselectedLabelColor: Colors.white,
       tabs: [
         Tab(
           text: TextConstants.login,

@@ -20,4 +20,15 @@ class MyTextStyles {
     color: Colors.green,
     fontWeight: FontWeight.w400,
   );
+
+  static const TextStyle dialogTitle = TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 20,
+  );
+
+  static const TextStyle miniStyle = TextStyle(
+    fontWeight: FontWeight.normal,
+    fontSize: 16,
+    color: Colors.white,
+  );
 }

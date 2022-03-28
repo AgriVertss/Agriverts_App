@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomLoadingIndicator extends StatelessWidget {
-  const CustomLoadingIndicator({
+class ScaffoldLoadingIndicator extends StatelessWidget {
+  const ScaffoldLoadingIndicator({
     Key? key,
   }) : super(key: key);
 
@@ -9,6 +9,22 @@ class CustomLoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
+}
+
+class PaddingCircularProgress extends StatelessWidget {
+  const PaddingCircularProgress({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
         child: CircularProgressIndicator(),
       ),
     );

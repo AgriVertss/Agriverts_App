@@ -17,11 +17,11 @@ import '../../view/addFacility/add_facility_vew.dart' as _i6;
 import '../../view/addFacility/qr_scanner_view.dart' as _i9;
 import '../../view/auth/auth_view.dart' as _i3;
 import '../../view/auth/email_confirmation_view.dart' as _i5;
+import '../../view/faq/faq_view.dart' as _i8;
 import '../../view/home/views/facility_detail_view.dart' as _i4;
 import '../../view/home/views/home_view.dart' as _i2;
 import '../../view/home/views/live_camera_view.dart' as _i7;
 import '../../view/splash/splash_view.dart' as _i1;
-import '../../view/sss/sss_view.dart' as _i8;
 
 class NavigationRoute extends _i10.RootStackRouter {
   NavigationRoute([_i11.GlobalKey<_i11.NavigatorState>? navigatorKey])
@@ -79,9 +79,9 @@ class NavigationRoute extends _i10.RootStackRouter {
       return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i7.LiveCameraView());
     },
-    SSSView.name: (routeData) {
+    FAQView.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.SSSView());
+          routeData: routeData, child: const _i8.FAQView());
     },
     QRScannerView.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
@@ -99,7 +99,7 @@ class NavigationRoute extends _i10.RootStackRouter {
             path: '/email-confirmation-view'),
         _i10.RouteConfig(AddFacilityView.name, path: '/add-facility-view'),
         _i10.RouteConfig(LiveCameraView.name, path: '/live-camera-view'),
-        _i10.RouteConfig(SSSView.name, path: '/s-ss-view'),
+        _i10.RouteConfig(FAQView.name, path: '/f-aq-view'),
         _i10.RouteConfig(QRScannerView.name, path: '/q-rscanner-view')
       ];
 }
@@ -180,11 +180,11 @@ class LiveCameraView extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.SSSView]
-class SSSView extends _i10.PageRouteInfo<void> {
-  const SSSView() : super(SSSView.name, path: '/s-ss-view');
+/// [_i8.FAQView]
+class FAQView extends _i10.PageRouteInfo<void> {
+  const FAQView() : super(FAQView.name, path: '/f-aq-view');
 
-  static const String name = 'SSSView';
+  static const String name = 'FAQView';
 }
 
 /// generated route for

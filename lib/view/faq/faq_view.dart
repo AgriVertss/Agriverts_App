@@ -3,8 +3,8 @@ import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/widgets/custom_fade_image.dart';
 import 'package:flutter/material.dart';
 
-class SSSView extends StatelessWidget {
-  const SSSView({Key? key}) : super(key: key);
+class FAQView extends StatelessWidget {
+  const FAQView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

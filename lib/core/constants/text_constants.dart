@@ -2,7 +2,9 @@ class TextConstants {
   static const String facilityTitle1 = 'Harvest Time';
   static const String homeTitle = 'Registered Vertical Farming Centers';
   static const String homeWelcome = 'Hi';
-  static const String pass = '"Password"';
+  static const String pass = 'Password';
+  static const String email = 'Email';
+  static const String user = 'Username';
   static const String sssTitle = 'Frequently asked questions';
   static const String authTitle = 'Welcome to AgriVerts';
   static const String login = 'Login';
@@ -24,4 +26,7 @@ class TextConstants {
   static const String stat = 'Status';
   static const String live = 'Start Live Streaming';
   static const String del = 'Delete this facility';
+  static const String add = 'Add New Facility';
+  static const String swipe = "Don't you have an account? You can register by swiping right now.";
+  static const String fail = 'Authentication failed';
 }

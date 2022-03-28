@@ -35,7 +35,7 @@ class _LiveCameraViewState extends State<LiveCameraView> with MuxConstant{
                   : VideoPlayer(_controller),
             )
           : Center(
-              child: CustomLoadingIndicator(),
+              child: ScaffoldLoadingIndicator(),
             ),
     );
   }

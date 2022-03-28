@@ -1,21 +1,32 @@
 import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/cubits/authCubit/auth_cubit.dart';
+import 'package:agriverts/product/widgets/custom_loading.dart';
+import 'package:agriverts/product/widgets/custom_textformfield.dart';
 import 'package:agriverts/view/auth/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginForm extends StatelessWidget {
+final _sigInFormKey = GlobalKey<FormState>();
+
+class LoginForm extends StatefulWidget {
   LoginForm({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
   final loginemailController = TextEditingController();
+
   final loginpasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _sigInFormKey,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
@@ -24,72 +35,41 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            TextFormField(
-              textInputAction: TextInputAction.next,
+            CustomTextFormField(
               controller: loginemailController,
-              decoration: const InputDecoration(
-                  focusColor: MyColors.primaryColor,
-                  errorStyle: TextStyle(
-                    color: Colors.red,
-                    fontSize: 15,
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  hintText: "Enter Your Email",
-                  label: Text("Email")),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return "Enter Valid Email";
-                } else if (!value.contains("@")) {
-                  return " You are missing @";
-                }
-                return null;
-              },
+              label: TextConstants.email,
             ),
             SizedBox(
               height: 20,
             ),
-            TextFormField(
-              textInputAction: TextInputAction.go,
+            CustomTextFormField(
+              isObscure: true,
               controller: loginpasswordController,
-              obscureText: true,
-              decoration: const InputDecoration(
-                  hoverColor: MyColors.primaryColor,
-                  focusColor: MyColors.primaryColor,
-                  errorStyle: TextStyle(
-                    color: Colors.red,
-                    fontSize: 15,
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  hintText: "Password",
-                  label: Text("Password")),
+              label: TextConstants.pass,
             ),
             SizedBox(
               height: 50,
             ),
             BlocBuilder<AuthCubit, AuthState>(
               builder: (context, state) {
-                 if (state is AuthNativeLoading) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircularProgressIndicator(),
-                  );
+                if (state is AuthNativeLoading) {
+                  return PaddingCircularProgress();
                 } else {
                   return CustomElevatedButton(
-                      onPressed: () {
-                        context.read<AuthCubit>().signInWithNative(
-                            password: loginpasswordController.value.text,
-                            email: loginemailController.value.text);
-                      },
-                      child: Text(TextConstants.login));
+                    onPressed: () {
+                      context.read<AuthCubit>().signInWithNative(
+                          password: loginpasswordController.value.text,
+                          email: loginemailController.value.text);
+                    },
+                    child: Text(TextConstants.login),
+                  );
                 }
               },
             ),
             SizedBox(
               height: 10,
             ),
-            Text('Hesabın yok mu? Hemen sağa kaydırarak kayıt olabilirsin'),
+            Text(TextConstants.swipe),
           ],
         ),
       ),

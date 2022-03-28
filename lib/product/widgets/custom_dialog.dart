@@ -1,3 +1,5 @@
+import 'package:agriverts/core/constants/color_constants.dart';
+import 'package:agriverts/core/constants/style_constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -6,22 +8,40 @@ class CustomDialog extends StatelessWidget {
   final String actionPopTitle;
   final String actionTitle;
   final VoidCallback onpressedAction;
-  const CustomDialog({Key? key, this.title='Are you sure ?', this.actionPopTitle='No', this.actionTitle='Yes',required this.onpressedAction}) : super(key: key);
+  const CustomDialog(
+      {Key? key,
+      this.title = 'Are you sure ?',
+      this.actionPopTitle = 'No',
+      this.actionTitle = 'Yes',
+      required this.onpressedAction})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(title),
+      backgroundColor: MyColors.primaryColor,
+      titleTextStyle: MyTextStyles.dialogTitle,
+      title: Text(
+        title,
+      ),
       actions: [
         TextButton(
           onPressed: onpressedAction,
-          child: Text(actionTitle),
+          child: Text(
+            actionTitle,
+            style: MyTextStyles.miniStyle.copyWith(
+              color: Colors.white54,
+            ),
+          ),
         ),
         TextButton(
           onPressed: () {
             context.router.pop();
           },
-          child: Text(actionPopTitle),
+          child: Text(
+            actionPopTitle,
+            style: MyTextStyles.miniStyle,
+          ),
         ),
       ],
     );

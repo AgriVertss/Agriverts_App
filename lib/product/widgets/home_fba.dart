@@ -1,3 +1,4 @@
+import 'package:agriverts/core/constants/text_constants.dart';
 import 'package:agriverts/product/navigation/route.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,11 @@ class HomeFBA extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SpeedDial(
+      elevation: 2,
       children: [
         SpeedDialChild(
           child: const Icon(Icons.add),
-          label: 'Yeni Ekle',
+          label: TextConstants.add,
           backgroundColor: Colors.green,
           onTap: () {
             context.router.push(AddFacilityView());
@@ -22,11 +24,11 @@ class HomeFBA extends StatelessWidget {
         ),
         SpeedDialChild(
           child: const Icon(Icons.question_mark_sharp),
-          label: 'SSS',
+          label: 'FAQ',
           backgroundColor: Colors.amberAccent,
           onTap: () {
             context.router.push(
-              SSSView(),
+              FAQView(),
             );
           },
         ),

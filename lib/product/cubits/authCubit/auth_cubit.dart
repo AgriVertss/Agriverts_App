@@ -39,7 +39,7 @@ class AuthCubit extends Cubit<AuthState> {
       return;
     }
     emit(AuthNativeLoading());
-    var isSigned = await _nativeAuthService.nativeSignUp(email: email,password: password);
+    var isSigned = await _nativeAuthService.nativeSignUp(email: email,password: password,username: userName);
     if (isSigned) {
       emit(AuthRegisterSucces());
     } else {
