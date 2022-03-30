@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AppConstant {
   static const String splashImagePath =
@@ -9,4 +10,11 @@ class AppConstant {
     bottomLeft: Radius.circular(20),
   );
   static const String splashAssetPath = 'assets/logo.png';
+  static final CameraPosition initialPosition = CameraPosition(
+    target: LatLng(47.4, 30.0),
+    zoom: 4.0,
+  );
+
+  static const String iconUrl =
+      'https://img.icons8.com/ios/344/hydropponics.png';
 }

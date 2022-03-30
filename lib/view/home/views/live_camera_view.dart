@@ -17,7 +17,7 @@ class _LiveCameraViewState extends State<LiveCameraView> with MuxConstant{
   void initState() {
     super.initState();
     _controller = VideoPlayerController.network(
-        '$muxStreamBaseUrl/$playbackId.$videoExtension')
+        'https://stream.mux.com/ZBFnVduthN7UqVTeelBeS700Mu8wFX5O9NEMIRvLgJ6s.m3u8')
       ..initialize().then((_) {
         setState(() {});
       });

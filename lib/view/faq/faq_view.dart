@@ -15,13 +15,11 @@ class FAQView extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
                 Center(
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 270,
                     decoration: BoxDecoration(
                       color: MyColors.authContainerColor,
                       borderRadius: BorderRadius.circular(20),
@@ -31,18 +29,19 @@ class FAQView extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Dikey tarım nedir?',
+                            'What is vertical farming? ',
                             style: TextStyle(fontSize: 20),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            'Dikey tarım aslında kontrollü çevre tarım veya yapı entegre tarım adında şehir ortamında büyük ölçekli tarım yöntemidir. Dikey tarımın amacı pestisit ve herbisit gibi çevreyi kirleten tarım ilaçlarının kullanımını azaltmak. Tarım arazilerindeki kaybı önlemek, orman arazilerinin tarım arazilerine dönüşmesinin önüne geçilmesini sağlamak ve ürünlerin ulaşımını kolaylaştırarak ulaşım masraflarını ortadan kaldırmaktır.',
+                            'Vertical farming is actually a large-scale farming method in an urban environment called controlled environment farming or structure integrated farming. The aim of vertical farming is to reduce the use of pesticides that pollute the environment, such as pesticides and herbicides. It is to prevent the loss of agricultural lands, to prevent the conversion of forest lands to agricultural lands, and to eliminate transportation costs by facilitating the transportation of products. ',
                             style: TextStyle(fontSize: 16),
                           ),
-                          SizedBox(height: 20,),
-                          
+                          SizedBox(
+                            height: 20,
+                          ),
                         ],
                       ),
                     ),
@@ -53,8 +52,6 @@ class FAQView extends StatelessWidget {
                 ),
                 Center(
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 280,
                     decoration: BoxDecoration(
                       color: MyColors.authContainerColor,
                       borderRadius: BorderRadius.circular(20),
@@ -64,42 +61,50 @@ class FAQView extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Dikey Tarımın Avantajları Nelerdir?',
+                            'What are the Advantages of Vertical Agriculture? ',
                             style: TextStyle(fontSize: 20),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            '- İklim kontrol sistemleri sayesinde ürünlere her mevsim ulaşım sağlanabiliyor',
+                            '- Thanks to climate control systems, products can be accessed in all seasons. ',
                             style: TextStyle(fontSize: 16),
                           ),
-                          SizedBox(height: 5,),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
-                            '- Dışarıdan gelecek etkenler kontrol altına alındığı için ürünlerden maksimum verim alınabiliyor.',
+                            '- As the external factors are taken under control, maximum efficiency can be obtained from the products. ',
                             style: TextStyle(fontSize: 16),
                           ),
-                          SizedBox(height: 5,),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
-                            '- Suyun tekrar tekrar kullanılabilmesi sebebi ile geleneksel tarıma göre %90 su tasarrufu yapılıyor.',
+                            '- Since water can be used repeatedly, 90% water is saved compared to traditional agriculture. ',
                             style: TextStyle(fontSize: 16),
                           ),
-                          SizedBox(height: 5,),
+                          SizedBox(
+                            height: 5,
+                          ),
                           Text(
-                            '- Toprak işleme alet ve makinaları ilaçlama makinaları vb geleneksel tarım aletleri kullanılmadığı için daha az karbon salınımı oluyor',
+                            '- Soil tillage tools and machines, spraying machines etc. There is less carbon emission because traditional agricultural tools are not used. ',
                             style: TextStyle(fontSize: 16),
                           ),
-                          SizedBox(height: 5,),
+                          SizedBox(
+                            height: 5,
+                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Center(
                   child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: 1010,
                     decoration: BoxDecoration(
                       color: MyColors.authContainerColor,
                       borderRadius: BorderRadius.circular(20),
@@ -111,14 +116,14 @@ class FAQView extends StatelessWidget {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            'Dikey Tarımda Hangi Ürünler Yetişir?',
+                            'What Crops Are Grown in Vertical Agriculture? ',
                             style: TextStyle(fontSize: 20),
                           ),
                           SizedBox(
                             height: 10,
                           ),
                           Text(
-                            'Dikey tarım ile birçok sebze üretilebiliyor ancak şimdilik daha çok mikro yeşilliklerin yetiştirilmesi tercih ediliyor. Özellikle çilek yetiştiriciliği, marul gibi kısa boylu yeşillik üretimi için dikey tarım sistemleri kullanılıyor. Nane, ıspanak, fesleğen, fasulye gibi ekinlerin üretimi dikey tarım ile yapılabiliyor. ',
+                            'Many vegetables can be produced with vertical farming, but for now, it is preferred to grow microgreens. Vertical farming systems are used especially for the production of short-length greens such as strawberries and lettuce. Crops such as mint, spinach, basil and beans can be produced by vertical farming. ',
                             style: TextStyle(fontSize: 16),
                           ),
                           SizedBox(
@@ -136,30 +141,30 @@ class FAQView extends StatelessWidget {
                                 SSSCard(
                                   imgUrl:
                                       'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sebzemeyvedunyasi.com%2FUploads%2FUrunResimleri%2FKivircik-Marul-cb9a.png&f=1&nofb=1',
-                                  title: 'Kıvırcık Marul',
+                                  title: 'Curly Lettuce ',
                                   desc:
-                                      'Dikey tarımda %51 oranında yetiştirilen bitkidir. Marul, salataların temelini oluşturulmasıyla ünlü yapraklı bir sebzedir. Marulun sağlığa faydaları öncelikle vitamin içeriğinden gelir',
+                                      'It is a plant grown at a rate of 51% in vertical agriculture. Lettuce is a leafy vegetable that is famous for forming the basis of salads. The health benefits of lettuce come primarily from its vitamin content. ',
                                 ),
                                 SSSCard(
                                   imgUrl:
                                       'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.ckwxcJs-BXz0d1VaFzrjgQHaHa%26pid%3DApi&f=1',
-                                  title: 'Ispanak',
+                                  title: 'Spinach',
                                   desc:
-                                      ' Ispanak bir süper besindir. Ispanak, düşük kalorili, koyu ve  yeşil yapraklı sebzeler içerisinde yer. Cilt, saç ve kemik sağlığı için önemlidir. Ayrıca protein, demir, vitamin ve mineral sağlar.',
+                                      'Spinach is a superfood. Spinach is a low-calorie, dark and green leafy vegetable. It is important for skin, hair and bone health. It also provides protein, iron, vitamins and minerals. ',
                                 ),
-                                 SSSCard(
+                                SSSCard(
                                   imgUrl:
                                       'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.mevsimgida.com.tr%2FUploads%2FUrunResimleri%2Fbuyuk%2Fcilek-bursa-9b9f.jpg&f=1&nofb=1',
-                                  title: 'Çilek',
+                                  title: 'Strawberry ',
                                   desc:
-                                      'Çilek, diğer meyveler gibi antienflamatuar özelliklere sahip vitamin, mineral,  lif ve antioksidan bileşikler açısından zengindir.',
+                                      'Strawberries, like other fruits, are rich in vitamins, minerals, fiber and antioxidant compounds that have anti-inflammatory properties. ',
                                 ),
                                 SSSCard(
                                   imgUrl:
                                       'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.3mzys4jmtSa1dDPAfABcDQHaHa%26pid%3DApi&f=1',
-                                  title: 'Dereotu',
+                                  title: 'Dill',
                                   desc:
-                                      'Dereotu, Orta Çağdan beri tıbbi bitki olarak, genellikle sindirim problemlerini ve hastalıklarını tedavi etmek için kullanılmıştır.',
+                                      'Dill has been used as a medicinal plant since the Middle Ages, often to treat digestive problems and ailments.',
                                 ),
                               ],
                             ),

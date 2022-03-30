@@ -32,8 +32,7 @@ class CustomLineChart extends StatelessWidget {
             ),
             Sparkline(
               data: data,
-              gridLinelabelPrefix: prefix,
-              gridLineLabelPrecision: labelPrecision,
+              gridLineLabelPrecision: 3,
               enableGridLines: true,
               useCubicSmoothing: true,
             ),

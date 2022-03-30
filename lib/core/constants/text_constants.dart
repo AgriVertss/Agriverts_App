@@ -29,4 +29,5 @@ class TextConstants {
   static const String add = 'Add New Facility';
   static const String swipe = "Don't you have an account? You can register by swiping right now.";
   static const String fail = 'Authentication failed';
+  static const String map = 'Show Map';
 }

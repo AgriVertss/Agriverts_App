@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 
 class FacilityOverview extends StatelessWidget {
   final FacilityModel data;
-  const FacilityOverview({Key? key, required this.data}) : super(key: key);
+  final String imgUrl;
+  const FacilityOverview({Key? key, required this.data,required this.imgUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class FacilityOverview extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomFadeInImage(imgUrl: AppConstant.splashImagePath,borderRadius: AppConstant.symmetricRadius),
+            CustomFadeInImage(imgUrl: imgUrl,borderRadius: AppConstant.symmetricRadius),
             Text(data.facilityName,style: TextStyle(fontSize: 18),),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,

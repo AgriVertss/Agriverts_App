@@ -1,3 +1,4 @@
+import 'package:agriverts/core/constants/app_constants.dart';
 import 'package:agriverts/core/constants/color_constants.dart';
 import 'package:agriverts/core/constants/style_constants.dart';
 import 'package:agriverts/core/constants/text_constants.dart';
@@ -79,6 +80,9 @@ class HomeView extends StatelessWidget with AutoRouteWrapper {
                     itemCount: state.facilities.length,
                     itemBuilder: (context, index) {
                       return FacilityOverview(
+                        imgUrl: index == 0
+                            ? AppConstant.splashImagePath
+                            : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F3u8dbs16f2emlqxkbc8tbvgf-wpengine.netdna-ssl.com%2Fwp-content%2Fuploads%2F2020%2F07%2FAeroFarms.png&f=1&nofb=1',
                         data: state.facilities[index],
                       );
                     },

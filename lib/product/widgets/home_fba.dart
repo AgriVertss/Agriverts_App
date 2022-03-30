@@ -32,6 +32,14 @@ class HomeFBA extends StatelessWidget {
             );
           },
         ),
+        SpeedDialChild(
+          child: const Icon(Icons.map),
+          label: TextConstants.map,
+          backgroundColor: Colors.blue,
+          onTap: () {
+            context.router.push(MapView());
+          },
+        ),
       ],
       activeLabel: Text('More'),
       backgroundColor: Colors.greenAccent,

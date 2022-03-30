@@ -24,6 +24,6 @@ String contentType = 'application/json';
 // Test video url provided by MUX
 String demoVideoUrl = 'https://storage.googleapis.com/muxdemofiles/mux-video-intro.mp4';
 
-String  playbackId = "MtOiFUjjdqXHl4WjHMFoNB01y02MAPAKlEuhw5NH7lzIw";
+String  playbackId = "bE5Gh01GgnM6S2FkJXj01s411p013hgL301obb72RGAxax8";
 
 }

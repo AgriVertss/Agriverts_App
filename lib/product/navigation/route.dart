@@ -6,6 +6,7 @@ import 'package:agriverts/view/faq/faq_view.dart';
 import 'package:agriverts/view/home/views/facility_detail_view.dart';
 import 'package:agriverts/view/home/views/home_view.dart';
 import 'package:agriverts/view/home/views/live_camera_view.dart';
+import 'package:agriverts/view/mapView/map_view.dart';
 import 'package:agriverts/view/splash/splash_view.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -18,6 +19,7 @@ import 'package:auto_route/auto_route.dart';
     CustomRoute(page: FacilityDetail,transitionsBuilder: TransitionsBuilders.fadeIn),
     CustomRoute(page: EmailConfirmationView,transitionsBuilder: TransitionsBuilders.slideLeft),
     CustomRoute(page: AddFacilityView,transitionsBuilder: TransitionsBuilders.fadeIn),
+    CustomRoute(page: MapView,transitionsBuilder: TransitionsBuilders.slideLeft),
     AutoRoute(page: LiveCameraView),
     AutoRoute(page: FAQView),
     AutoRoute(page: QRScannerView),
